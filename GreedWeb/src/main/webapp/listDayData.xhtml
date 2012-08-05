@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: marco
+  Date: 3/25/12
+  Time: 11:20 AM
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+    <title>#{mainPage.accountInfoLast.netLiquidation}</title>
+
+
+
+</h:head>
+
+<h:body>
+    <ui:composition template="./template/templateLayout.xhtml">
+
+        <ui:define name="content">
+            <h:form>
+                <p:dataTable id="basic" var="element" value="#{dayDataPage.allDayData}">
+                    <p:column id="modelHeader">
+                        <f:facet name="header">
+                            Date
+                        </f:facet>
+                        <h:outputText value="#{element.date}" />
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            Comment
+                        </f:facet>
+                        <p:editor value="#{element.dailyComment.comment}" controls="" disabled="true"/>
+                    </p:column>
+
+
+            <p:column>
+                    <p:commandLink  ajax="false" value = "Edit" action="#{dayDataPage.editRecord(element.id)}"/>
+                </p:column>
+                </p:dataTable>
+                <p:commandLink ajax="false" value = "Today" action="#{dayDataPage.createTodayData}"/>
+
+            </h:form>
+        </ui:define>
+
+    </ui:composition>
+
+</h:body>
+
+</html>

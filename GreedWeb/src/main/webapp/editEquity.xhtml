@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: marco
+  Date: 3/25/12
+  Time: 11:20 AM
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+    <title>#{mainPage.accountInfoLast.netLiquidation}</title>
+    <meta http-equiv="refresh" content="60" />
+</h:head>
+
+<h:body>
+    <ui:composition template="./template/templateLayout.xhtml">
+
+    <ui:define name="content">
+
+    <p:panel header="Partial Process">
+          <h:form>
+        <h:panelGrid id="grid" columns="2" style="margin-bottom:10px">
+            <f:facet name="header">
+                <p:messages />
+            </f:facet>
+
+            <h:outputLabel for="name" value="Name:" />
+            <p:inputText id="name"
+                         value="#{equityEditPage.selectedEquity.ticker}" />
+            <h:outputLabel for="targetUp" value="Target Up:" />
+            <p:inputText id="targetUp"
+                         value="#{equityEditPage.selectedEquity.targetUp1}" />
+            <h:outputLabel for="targetDown" value="Target Down:" />
+            <p:inputText id="targetDown"
+                         value="#{equityEditPage.selectedEquity.targetDown1}" />
+
+            <h:outputLabel for="rt" value="RealTime:" />
+            <p:selectBooleanCheckbox id="rt" value="#{equityEditPage.selectedEquity.realTime}"/>
+            <h:outputLabel for="favourite" value="Favourite:" />
+            <p:selectBooleanCheckbox id="favourite" value="#{equityEditPage.selectedEquity.favourite}"/>
+
+
+            <h:commandButton  value="Save"  action="#{equityEditPage.saveSelectedEquity}"/>
+
+        </h:panelGrid>
+
+          </h:form>
+    </p:panel>
+
+    </ui:define>
+
+    </ui:composition>
+
+</h:body>
+
+</html>

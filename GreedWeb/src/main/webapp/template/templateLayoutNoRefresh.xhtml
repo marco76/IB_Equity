@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+    <title><h:outputText value="#{mainPage.accountInfoLast.netLiquidation/1000}" >
+        <f:convertNumber pattern="#0.0k" />
+    </h:outputText></title>
+    <link type="text/css" rel="stylesheet" href="./css/default.css" />
+</h:head>
+
+<body>
+<div id="page">
+
+    <div id="header">
+        <ui:insert name="header" >
+            <ui:include src="/template/commonHeader.xhtml" />
+        </ui:insert>
+    </div>
+
+    <div id="content">
+        <ui:insert name="content" >
+            <ui:include src="/template/commonContent.xhtml" />
+        </ui:insert>
+    </div>
+
+    <div id="footer">
+        <ui:insert name="footer" >
+            <ui:include src="/template/commonFooter.xhtml" />
+        </ui:insert>
+    </div>
+
+</div>
+</body>
+</html>

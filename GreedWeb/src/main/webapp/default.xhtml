@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: marco
+  Date: 3/25/12
+  Time: 11:20 AM
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">>
+
+<h:head>
+    <title>#{mainPage.accountInfoLast.netLiquidation}</title>
+    <meta http-equiv="refresh" content="60" />
+</h:head>
+
+<h:body>
+    <ui:composition template="./template/templateLayout.xhtml">
+
+    <ui:define name="content">
+
+    <p:panelGrid columns="2">
+        <h:dataTable value="#{mainPage.accountData}" var="c"
+                     styleClass="order-table"
+                     headerClass="order-table-header"
+                     rowClasses="order-table-odd-row,order-table-even-row"
+                >
+
+            <h:column>
+                <f:facet name="header">
+                    ID
+                </f:facet>
+
+                <h:outputText value="#{c.id}">
+                    <f:convertDateTime type="date" pattern="hh:mm dd.MM" />
+                </h:outputText>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">
+
+                </f:facet>
+                #{c.netLiquidation}
+                </h:column>
+            <h:column><f:facet name="header"/>
+                #{c.availableFunds}
+            </h:column>
+
+        </h:dataTable>
+
+        <p:meterGaugeChart id="custom" value="#{mainPage.meterGaugeModel}" showTickLabels="false" labelHeightAdjust="110"
+                           intervalOuterRadius="130" seriesColors="cc6666, E7E658,93b75f, 66cc66" style="width:400px;height:250px" />
+
+
+    </p:panelGrid>
+      <p:lineChart id="linear" value="#{mainPage.linearModel}" legendPosition="se"
+                 title="Linear Chart" minY="#{mainPage.linearMin}" maxY="#{mainPage.linearMax}" style="height:200px;width:300px"/>
+
+</ui:define>
+    </ui:composition>
+</h:body>
+
+</html>

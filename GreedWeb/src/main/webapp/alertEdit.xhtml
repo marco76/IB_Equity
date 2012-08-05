@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: marco
+  Date: 3/25/12
+  Time: 11:20 AM
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">>
+
+<h:head>
+    <title>#{mainPage.accountInfoLast.netLiquidation}</title>
+    <meta http-equiv="refresh" content="60" />
+</h:head>
+
+<h:body>
+    <ui:composition template="./template/templateLayout.xhtml">
+
+    <ui:define name="content">
+
+    <p:panel id="panelEdit">
+          <h:form>
+        <h:panelGrid id="grid" columns="2" style="margin-bottom:10px">
+            <f:facet name="header">
+                <p:messages />
+            </f:facet>
+
+            <h:outputLabel for="id" value="Id:" />
+            <h:outputText id="id"
+                         value="#{alertEditPage.alertNew.id}" />
+
+
+            <h:outputLabel for="name" value="Name:" />
+            <p:inputText id="name"
+                         value="#{alertEditPage.alertNew.name}" />
+
+            <h:outputLabel for="ticker" value="Ticker:" />
+            <p:inputText id="ticker"
+                         value="#{alertEditPage.alertNew.ticker}" />
+
+
+            <h:outputLabel for="valueUp" value="Limit up:" />
+            <p:inputText id="valueUp"
+                         value="#{alertEditPage.alertNew.limitUp}"/>
+
+            <h:outputLabel for="valueMin" value="Limit min:" />
+            <p:inputText id="valueMin"
+                         value="#{alertEditPage.alertNew.limitMin}"/>
+            <h:outputLabel for="active" value="Active:" />
+            <p:selectBooleanCheckbox id="active" value="#{alertEditPage.alertNew.active}" />
+
+
+
+
+            <h:outputLabel for="message" value="Message:" />
+            <p:inputText id="message"
+                         value="#{alertEditPage.alertNew.message}"/>
+            <h:commandButton value="Save"  action="#{alertEditPage.saveNewAlert}"/>
+            <h:commandButton value="Reset"  action="#{alertEditPage.resetAlert}"/>
+
+        </h:panelGrid>
+          </h:form>
+    </p:panel>
+        <p:panel id = "panelList">
+        <h:form>
+            <p:dataTable id="basic" var="alert" value="#{alertEditPage.alerts}">
+                <p:column id="modelHeader">
+                    <f:facet name="header">
+
+                    </f:facet>
+                    <h:outputText value="#{alert.ticker}" />
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+
+                    </f:facet>
+                    <p:selectBooleanCheckbox value="#{alert.active}" />
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                    Limit min
+                    </f:facet>
+                    <h:outputText value="#{alert.limitMin}" />
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                     Limit up
+                    </f:facet>
+                    <h:outputText value="#{alert.limitUp}" />
+                </p:column>
+
+                <p:column>
+                    <p:commandLink ajax="false" value = "Edit" action="#{alertEditPage.editSelected(alert.id)}"/>
+                </p:column>
+
+            </p:dataTable>
+        </h:form>
+        </p:panel>
+    </ui:define></ui:composition>
+</h:body>
+
+</html>

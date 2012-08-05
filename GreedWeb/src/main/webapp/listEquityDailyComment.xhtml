@@ -1,0 +1,64 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+    <title>#{mainPage.accountInfoLast.netLiquidation}</title>
+</h:head>
+<h:body>
+    <ui:composition template="./template/templateLayoutNoRefresh.xhtml">
+
+    <ui:define name="content">
+
+    <p:panel id="panelEdit">
+        <h:form enctype="multipart/form-data">
+        <h:panelGrid id="grid" columns="2" style="margin-bottom:10px">
+            <f:facet name="header">
+                <p:messages />
+            </f:facet>
+
+            <h:outputLabel for="id" value="Id:" />
+            <h:outputText id="id"
+                         value="#{equityDailyCommentPage.selectedDailyComment.equityId}" />
+
+
+            <h:outputLabel for="name" value="Date int:" />
+            <p:inputText id="name"
+                         value="#{equityDailyCommentPage.selectedDailyComment.dateInt}" />
+
+                <h:outputLabel for="comment" value="Comment:" />
+<p:editor  id="comment"
+     value="#{equityDailyCommentPage.selectedDailyComment.comment1}"
+width="600"/>
+
+            <p:fileUpload value="#{equityDailyCommentPage.file}" mode="simple"/>
+
+               <h:commandButton value="Save"  action="#{equityDailyCommentPage.saveSelectedComment}"/>
+
+
+
+        </h:panelGrid>
+          </h:form>
+
+     </p:panel>
+        <p:dataTable id="basic" var="element" value="#{equityDailyCommentPage.equityDailyCommentList}">
+                        <p:column id="modelHeader">
+                            <f:facet name="header">
+                                Date
+                            </f:facet>
+                            <h:outputText value="#{element.dateInt}" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                Comment
+                            </f:facet>
+                            <h:outputText value="#{element.comment1}" />
+                        </p:column>
+                        </p:dataTable>
+
+            </ui:define>
+        </ui:composition>
+</h:body>
+</html>

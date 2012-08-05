@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: marco
+  Date: 3/25/12
+  Time: 11:20 AM
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+    <title>#{mainPage.accountInfoLast.netLiquidation}</title>
+    <meta http-equiv="refresh" content="55" />
+
+
+</h:head>
+
+<h:body>
+    <ui:composition template="./template/templateLayout.xhtml">
+
+        <ui:define name="content">
+            <h:form>
+                <p:dataTable id="basic" var="equity" value="#{listEquityPageRT.equities}" rowStyleClass="#{equity.rowStyle}">
+                    <p:column id="modelHeader">
+                        <f:facet name="header">
+                            Ticker
+                        </f:facet>
+                        <h:outputText value="#{equity.equity.ticker}" />
+                    </p:column>
+                    <p:column id="status">
+                        <f:facet name="header">
+                            Status
+                        </f:facet>
+                        <h:outputText value="#{equity.percentRangeDay}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            Last
+                        </f:facet>
+                        <h:outputText value="#{equity.equityData.last}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                          Bid
+                        </f:facet>
+                        <h:outputText value="#{equity.equityData.bid}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            Ask
+                        </f:facet>
+                        <h:outputText value="#{equity.equityData.ask}" />
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            High
+                        </f:facet>
+                        <h:outputText value="#{equity.equityData.high}" />
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            Low
+                        </f:facet>
+                        <h:outputText value="#{equity.equityData.low}" />
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            Mark Price
+                        </f:facet>
+                        <h:outputText value="#{equity.equityData.markPrice}" />
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            High 13 Weeks
+                        </f:facet>
+                        <h:outputText value="#{equity.equityData.high13week}" />
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            Target Up
+                        </f:facet>
+                        <h:outputText value="#{equity.equity.targetUp1}" />
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            Target Down
+                        </f:facet>
+                        <h:outputText value="#{equity.equity.targetDown1}" />
+                    </p:column>
+
+                </p:dataTable>
+            </h:form>
+        </ui:define>
+
+    </ui:composition>
+
+</h:body>
+
+</html>

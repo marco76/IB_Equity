@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+    <persistence-unit name="greedPersistence2" transaction-type="RESOURCE_LOCAL">
+        <class>ch.genidea.greed.ib.bean.AccountInfo</class>
+        <class>ch.genidea.greed.ib.bean.Alert</class>
+        <class>ch.genidea.greed.ib.bean.Equity</class>
+        <class>ch.genidea.greed.ib.bean.EquityData</class>
+        <class>ch.genidea.greed.ib.bean.PortfolioElement</class>
+        <class>ch.genidea.greed.ib.bean.StrategyData</class>
+        <class>ch.genidea.greed.ib.bean.DayData</class>
+        <class>ch.genidea.greed.ib.bean.Comment</class>
+        <class>ch.genidea.greed.ib.bean.EquityDailyComment</class>
+        <class>ch.genidea.greed.ib.bean.EquityHistoricalPrice</class>
+
+    </persistence-unit>
+</persistence>

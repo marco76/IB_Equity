@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: marco
+  Date: 3/25/12
+  Time: 11:20 AM
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+    <title>#{mainPage.accountInfoLast.netLiquidation}</title>
+    <meta http-equiv="refresh" content="55" />
+
+
+</h:head>
+
+<h:body>
+    <ui:composition template="./template/templateLayout.xhtml">
+
+        <ui:define name="content">
+            <f:event type="preRenderView" listener="#{portfolioPage.init}" />
+            <h:form>
+                <p:dataTable id="basic" var="element" value="#{portfolioPage.allPotfolioElements}">
+                    <p:column id="modelHeader">
+                        <f:facet name="header">
+                            Ticker
+                        </f:facet>
+                        <h:outputText value="#{element.portfolioElement.ticker}" />
+                    </p:column>
+                    <p:column style="text-align:right;" styleClass="right">
+                        <f:facet name="header">
+                            Earning
+                        </f:facet>
+                        <h:outputText value="#{element.earning}" />
+                    </p:column>
+                    <p:column style="text-align:right;">
+                        <f:facet name="header">
+                            Price avg.
+                        </f:facet>
+                        <h:outputText value="#{element.averageCost}" />
+                    </p:column>
+
+                    <p:column styleClass="right">
+                        <f:facet name="header">
+                          Price
+                        </f:facet>
+                        <h:outputText value="#{element.price}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            Value
+                        </f:facet>
+                        <h:outputText value="#{element.portfolioElement.marketValue}" />
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            Unrealized
+                        </f:facet>
+                        <h:outputText value="#{element.portfolioElement.unrealizedPNL}" />
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            Realized
+                        </f:facet>
+                        <h:outputText value="#{element.portfolioElement.realizedPNL}" />
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                          Position
+                        </f:facet>
+                        <h:outputText value="#{element.portfolioElement.position}" />
+                    </p:column>
+
+                <p:column>
+                    <f:facet name="header">
+                        Strategy active
+                    </f:facet>
+                    <h:selectBooleanCheckbox value="#{element.portfolioElement.strategyActive}" />
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">
+                        Strategy
+                    </f:facet>
+                    <h:outputText value="#{element.portfolioElement.strategyName}" />
+                </p:column>
+            <p:column>
+                    <p:commandLink  value = "Edit" action="#{portfolioPage.editRecord(element.portfolioElement.ticker)}"/>
+                </p:column>
+                </p:dataTable>
+            </h:form>
+        </ui:define>
+
+    </ui:composition>
+
+</h:body>
+
+</html>
